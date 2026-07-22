@@ -99,7 +99,7 @@ Windows may warn you about an unrecognised app the first time, because these
 builds aren't signed with a paid certificate. Choosing "More info → Run anyway"
 gets you past it.
 
-They're on the chunky side (75–95 MB) because each app ships with everything it
+They're on the chunky side (110–141 MB) because each app ships with everything it
 needs to run rather than relying on anything already on your machine.
 
 ---
