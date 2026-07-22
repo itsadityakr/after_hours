@@ -51,9 +51,9 @@ sign out — either after a delay or at a particular time. There's a countdown y
 can watch, and you can cancel at any point. Handy for overnight downloads or
 falling asleep to something.
 
-**Context Menu Tool** — Adds your own entries to the Windows right-click menu,
-without opening the registry editor. Pick a name, pick an icon, point it at
-whatever you want to run. You can edit or remove anything you've added.
+**Context Menu Tool** — Adds your own entries to the Windows right-click menu.
+Pick a name, pick an icon, point it at whatever you want to open. You can edit or
+remove anything you've added, and it doesn't need administrator rights.
 
 **Control Deck** — Turns your phone into a remote for your PC. Scan a QR code and
 you get volume, media buttons, display and power controls from your phone's
@@ -68,18 +68,33 @@ This one is still in beta.
 - **No accounts.** Nothing to sign up for. Nothing to log into.
 - **No tracking.** The apps don't phone home. Your settings live on your own
   machine and stay there.
-- **Open.** The code for every app is public. If you don't trust a download, read
-  the source, or build it yourself.
 - **Yours to keep.** MIT licensed — use it, change it, ship it in something else.
+
+---
+
+## Access
+
+**Downloads are open to everyone** — no account, no request, just click and grab
+the zip.
+
+The *code*, though, is private. The source and issue links on the site will only
+open for people I've given access to.
+
+**If you'd like to see the code, please get in touch:**
+[github.com/itsadityakr](https://github.com/itsadityakr)
+
+Just say which app you're after and what you'd like it for. Access is granted per
+repository, so mention if you want more than one.
 
 ---
 
 ## Getting an app
 
-Open the site, pick an app, click download. You'll land on its releases page on
-GitHub, where you can grab the latest build.
+Open the site, pick an app, click download. You'll land on a MediaFire page with
+a zip of the latest build — no GitHub access needed for this part, downloads are
+open to everyone.
 
-The apps are portable, so there's no installer to run — download it and open it.
+The apps are portable, so there's no installer to run — unzip it and open it.
 Windows may warn you about an unrecognised app the first time, because these
 builds aren't signed with a paid certificate. Choosing "More info → Run anyway"
 gets you past it.
@@ -91,9 +106,10 @@ needs to run rather than relying on anything already on your machine.
 
 ## Something missing or broken?
 
-Every app has an issues page on GitHub — that's the best place to report a bug or
-ask for a feature. If you'd rather fix it yourself, pull requests are welcome, and
-you're free to fork any of these and take them in your own direction.
+If you have access, every app has an issues page on GitHub — that's the best
+place to report a bug or ask for a feature, and pull requests are welcome. If you
+don't have access yet, [reach out](https://github.com/itsadityakr) and I'll sort
+it out.
 
 ---
 
