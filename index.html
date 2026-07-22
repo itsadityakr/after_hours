@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <title>After Hours — small desktop tools by Aditya Kumar</title>
+    <meta
+      name="description"
+      content="Free, open-source Windows utilities built after hours: Me Not AFK, Shut Me Down, Context Menu Tool and Control Deck. MIT licensed, no telemetry."
+    />
+    <meta property="og:title" content="After Hours — small desktop tools" />
+    <meta
+      property="og:description"
+      content="Windows utilities built after hours by Aditya Kumar. MIT licensed, no telemetry, no accounts."
+    />
+    <meta property="og:type" content="website" />
+    <script>
+      // Resolve the stored theme before first paint so there is no flash.
+      try {
+        const stored = JSON.parse(localStorage.getItem('afterhours:theme') || '"system"')
+        const dark =
+          stored === 'dark' ||
+          (stored === 'system' && matchMedia('(prefers-color-scheme: dark)').matches)
+        document.documentElement.dataset.theme = dark ? 'dark' : 'light'
+      } catch {}
+    </script>
+    <script type="module" crossorigin src="/assets/index-BQvOKqi9.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CLgHsjV0.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
