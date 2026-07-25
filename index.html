@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/after_hours/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="light dark" />
     <title>After Hours — small desktop tools by Aditya Kumar</title>
@@ -17,6 +17,15 @@
     />
     <meta property="og:type" content="website" />
     <script>
+      // Assets are referenced relatively, which resolves against the directory
+      // this document is in — so /after_hours would look for them one level too
+      // high while /after_hours/ works. Hosts normally redirect to add the
+      // slash; this makes sure of it before anything else loads.
+      if (location.pathname && !location.pathname.endsWith('/') && !/\.[^/]+$/.test(location.pathname)) {
+        location.replace(location.pathname + '/' + location.search + location.hash)
+      }
+    </script>
+    <script>
       // Resolve the stored theme before first paint so there is no flash.
       try {
         const stored = JSON.parse(localStorage.getItem('afterhours:theme') || '"system"')
@@ -26,10 +35,10 @@
         document.documentElement.dataset.theme = dark ? 'dark' : 'light'
       } catch {}
     </script>
-    <script type="module" crossorigin src="/after_hours/assets/index-Cd4LMEZl.js"></script>
-    <link rel="stylesheet" crossorigin href="/after_hours/assets/index-CLgHsjV0.css">
+    <script type="module" crossorigin src="./assets/index-PvJOK7qE.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-C4JvX1_z.css">
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root"></div>
   </body>
 </html>
