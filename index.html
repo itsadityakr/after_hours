@@ -136,9 +136,16 @@
     </style>
     <script>
       document.documentElement.setAttribute('data-booting', '')
+      // If the app never gets far enough to clear this itself — a bundle that
+      // fails to parse, a render that throws — the alternative is a loading
+      // animation running over nothing, forever, with no way to tell it is
+      // stuck. An empty page at least reads as broken.
+      setTimeout(function () {
+        document.documentElement.removeAttribute('data-booting')
+      }, 8000)
     </script>
-    <script type="module" crossorigin src="./assets/index-B2vCO8PU.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-fQvTo7Kz.css">
+    <script type="module" crossorigin src="./assets/index-DjyL-pEc.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-BSGudyVb.css">
   </head>
   <body>
     <div id="boot" aria-hidden="true">
