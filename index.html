@@ -3,7 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- `viewport-fit=cover` is what makes env(safe-area-inset-*) report real
+         numbers. Without it a notched phone letterboxes the page and every
+         safe-area rule in motion.css quietly resolves to zero. -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
     <meta name="color-scheme" content="light dark" />
     <title>After Hours — small desktop tools by Aditya Kumar</title>
     <meta
@@ -35,8 +41,8 @@
         document.documentElement.dataset.theme = dark ? 'dark' : 'light'
       } catch {}
     </script>
-    <script type="module" crossorigin src="./assets/index-PvJOK7qE.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-C4JvX1_z.css">
+    <script type="module" crossorigin src="./assets/index-BKimx8l8.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-B8Bv6Vxp.css">
   </head>
   <body>
     <div id="root"></div>
