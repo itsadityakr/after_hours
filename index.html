@@ -11,6 +11,9 @@
       content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     />
     <meta name="color-scheme" content="light dark" />
+    <!-- Rewritten by the theme hook once React is up; this is the value the
+         browser chrome uses for the half-second before that. -->
+    <meta name="theme-color" content="#f7f7fb" />
     <title>After Hours — small desktop tools by Aditya Kumar</title>
     <meta
       name="description"
@@ -32,19 +35,116 @@
       }
     </script>
     <script>
-      // Resolve the stored theme before first paint so there is no flash.
+      // Resolve the stored theme before first paint so there is no flash. Kept
+      // in step with THEMES in src/hooks/useTheme.js: anything that is not a
+      // real theme is treated as "system" and resolved against the OS.
       try {
-        const stored = JSON.parse(localStorage.getItem('afterhours:theme') || '"system"')
-        const dark =
-          stored === 'dark' ||
-          (stored === 'system' && matchMedia('(prefers-color-scheme: dark)').matches)
-        document.documentElement.dataset.theme = dark ? 'dark' : 'light'
+        var stored = JSON.parse(localStorage.getItem('afterhours:theme') || '"system"')
+        var resolved =
+          stored === 'dark' || stored === 'light' || stored === 'relax'
+            ? stored
+            : matchMedia('(prefers-color-scheme: dark)').matches
+              ? 'dark'
+              : 'light'
+        document.documentElement.dataset.theme = resolved
+        var bg = { light: '#f7f7fb', relax: '#f1eadd', dark: '#0b0b10' }[resolved]
+        document.documentElement.style.setProperty('--boot-bg', bg)
+        document.querySelector('meta[name="theme-color"]').content = bg
       } catch {}
     </script>
-    <script type="module" crossorigin src="./assets/index-BKimx8l8.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-B8Bv6Vxp.css">
+    <!-- ── Boot ────────────────────────────────────────────────────────────
+         Every guide on this site is compiled into the bundle, so there is a
+         real wait between the document arriving and React having anything to
+         show. This fills it. It is inline rather than a component because a
+         loader that ships inside the bundle it is waiting for cannot be seen.
+
+         It removes itself: the app clears `data-booting` once it has painted,
+         and the transition below fades this out and takes it off the layer.  -->
+    <style>
+      #boot {
+        position: fixed;
+        inset: 0;
+        z-index: 999;
+        display: grid;
+        place-content: center;
+        justify-items: center;
+        gap: 1.1rem;
+        background: var(--boot-bg, #f7f7fb);
+        transition: opacity 0.45s ease, visibility 0.45s;
+      }
+      html:not([data-booting]) #boot {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+      #boot-mark {
+        width: 46px;
+        height: 46px;
+        border-radius: 14px;
+        background: linear-gradient(145deg, #6d4aff, #34d399);
+        animation: boot-breathe 1.6s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+      }
+      [data-theme='relax'] #boot-mark {
+        background: linear-gradient(145deg, #2f6a5a, #8a9a52);
+      }
+      #boot-track {
+        width: 132px;
+        height: 3px;
+        border-radius: 999px;
+        background: rgba(128, 128, 128, 0.22);
+        overflow: hidden;
+      }
+      #boot-track::after {
+        content: '';
+        display: block;
+        width: 40%;
+        height: 100%;
+        border-radius: 999px;
+        background: currentColor;
+        color: #6d4aff;
+        animation: boot-slide 1.1s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+      }
+      [data-theme='relax'] #boot-track::after {
+        color: #2f6a5a;
+      }
+      [data-theme='dark'] #boot-track::after {
+        color: #8b6cff;
+      }
+      @keyframes boot-breathe {
+        50% {
+          transform: scale(0.86) rotate(-8deg);
+          border-radius: 20px;
+        }
+      }
+      @keyframes boot-slide {
+        from {
+          transform: translateX(-110%);
+        }
+        to {
+          transform: translateX(360%);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        #boot-mark,
+        #boot-track::after {
+          animation: none;
+        }
+        #boot-track::after {
+          width: 100%;
+        }
+      }
+    </style>
+    <script>
+      document.documentElement.setAttribute('data-booting', '')
+    </script>
+    <script type="module" crossorigin src="./assets/index-Tsy9Jmg5.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-BIX6Ue7D.css">
   </head>
   <body>
+    <div id="boot" aria-hidden="true">
+      <div id="boot-mark"></div>
+      <div id="boot-track"></div>
+    </div>
     <div id="root"></div>
   </body>
 </html>
