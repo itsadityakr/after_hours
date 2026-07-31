@@ -57,6 +57,8 @@ only so the column counts from 1 like the row does — and it could be dropped, 
 the next section explains, which is precisely why it is worth writing down that
 you meant it.
 
+![The square h3 turned into a column, a row and one parity test](diagrams/determine-color-of-a-chessboard-square-notes-a1-parity.jpg)
+
 ## Approach 2 — look the column up instead of computing it
 
 If the letter-to-number step is the part that feels like a trick, do not do it:
@@ -95,6 +97,8 @@ that *what your numbers mean* has to be settled before the parity question is
 asked — the arithmetic will not tell you when you are off by one, it will just
 answer the opposite.
 
+![The same square with the column found by indexOf instead of subtracted](diagrams/determine-color-of-a-chessboard-square-notes-a2-lookup.jpg)
+
 Slower than approach 1 by a scan of eight characters, which is to say not slower
 in any way that can be measured. Write it if it is the one you can explain.
 
@@ -126,6 +130,8 @@ No subtraction at all: add the two characters as they came and ask whether the
 sum is odd. It gives the same answer as approach 1 on all sixty-four squares —
 and it is worth knowing exactly why, because the reason is a real fact and the
 habit is a bad one.
+
+![The two characters added as they came, with no subtraction at all](diagrams/determine-color-of-a-chessboard-square-notes-a3-raw.jpg)
 
 ## Why the offsets do not matter
 

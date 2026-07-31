@@ -129,6 +129,8 @@ outer \`while\` has become the call at the end. **The stack does not grow far** 
 for an \`int\` this recurses at most twice, because the digit sum of the biggest
 \`int\` is 46 and the digit sum of that is 10.
 
+![The recursion calling down to a single digit and handing the answer back](diagrams/add-digits-notes-a2-calls.jpg)
+
 Note the \`for (int x = num; …)\` rather than consuming \`num\` itself. The
 recursion needs nothing after the sum, but leaving the parameter alone is the
 habit that stops a "why is \`num\` zero here" half an hour later.
@@ -170,6 +172,8 @@ come back as 9: for 9, 18 and 27 the digital root is 9 and \`num % 9\` says 0.
 Shifting down by one, taking the remainder and shifting back is the standard way
 of writing "1 to 9 instead of 0 to 8", and the \`num == 0\` guard is there because
 0 is the one number whose answer really is 0.
+
+![The digital root worked out in one expression, and the pattern it comes from](diagrams/add-digits-notes-a3-formula.jpg)
 
 Know it, but write the loop first unless the follow-up is asked. The loop is
 what shows you can turn the rule into code; the formula is what shows you have

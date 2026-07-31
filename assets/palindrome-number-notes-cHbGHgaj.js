@@ -69,6 +69,8 @@ It is correct, it is three lines, and it handles the minus sign for free —
 \`"-121"\` reversed is \`"121-"\`, which is not equal to it. Write this if the
 question does not forbid it.
 
+![The number turned into text, reversed, and compared](diagrams/palindrome-number-notes-a1-text.jpg)
+
 What it costs is two strings and a builder for a question about a number. That
 is the whole of the follow-up: the answer is decided by the digits, and the
 digits are available with \`% 10\` without allocating anything.
@@ -119,6 +121,8 @@ not the reverse of anything. Compare *that* with the original and you still get
 "not a palindrome", and you get it by luck: the wrapped value simply happened
 not to collide. That is not an argument you want to be making about your own
 code.
+
+![The whole number being rebuilt digit by digit, and where it stops fitting](diagrams/palindrome-number-notes-a2-reverse.jpg)
 
 A \`long\` accumulator removes the problem and is a perfectly good answer — the
 reverse of an \`int\` always fits in one. It is also the point at which a good

@@ -59,6 +59,8 @@ numberOfSteps(0)
 than from the input. 0 never enters the loop and comes back 0, which is the edge
 case handled by not writing one.
 
+![One pass of the loop: test, branch, count, repeat](diagrams/number-of-steps-to-reduce-a-number-to-zero-notes-a1-pass.jpg)
+
 **One \`count++\`, after the branch rather than inside both arms.** Two counters
 in two branches are two places for the same fact, and two places for the same
 fact eventually disagree.
@@ -94,6 +96,8 @@ numberOfSteps(0)
 The \`1 +\` is the step being taken, and it is outside the choice because both
 branches take one. Written with the \`+ 1\` inside each arm it is the same answer
 and the same drift the loop version avoids.
+
+![The recursion going down to zero and the ones adding up on the way back](diagrams/number-of-steps-to-reduce-a-number-to-zero-notes-a2-stack.jpg)
 
 **What it costs that the loop does not is the stack.** One frame per step, and
 the steps are what the problem counts — so this is the version to know about and

@@ -72,6 +72,8 @@ On the judge this sits inside \`class Solution\` with the method public and
 nothing else changed. \`%\` here is not the digit trick — \`i % 3 == 0\` is the
 other question the operator answers, *does three divide i exactly*.
 
+![One pass of the branch chain, for a number that matches and one that does not](diagrams/fizz-buzz-notes-a1-pass.jpg)
+
 Three things in that loop are worth saying out loud.
 
 **The counter starts at 1, not 0.** The problem counts from one, and \`0 % 3\` is
@@ -140,6 +142,8 @@ Same output, and the combined case is no longer a case — it falls out of two
 independent tests that both happen to fire. A seventh word is one more \`if\`
 rather than four more branches.
 
+![The word being built from two independent tests rather than chosen from four branches](diagrams/fizz-buzz-notes-a2-build.jpg)
+
 Know it, and do not reach for it first: with two words the chain is plainer, and
 plainer is what is being read for. Reach for it the moment a follow-up adds a
 third word, and say why as you do.
@@ -191,6 +195,8 @@ Two counters, each reset the moment it reaches its own number. It is the same
 \`O(n)\` and it is not faster in any way you could measure — what it demonstrates
 is that "divisible by three" and "every third one" are the same statement, and
 that a remainder is one way to ask the question rather than the only one.
+
+![Two counters climbing and resetting instead of a remainder being taken](diagrams/fizz-buzz-notes-a3-counters.jpg)
 
 **Both counters have to be tested, not one or the other.** Written as an
 \`else if\` this would fail on 15 for exactly the reason approach 1 fails when the

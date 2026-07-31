@@ -52,6 +52,8 @@ maximum69Number(66)
 would raise every 6 and answer 9999 for 9669, which is a different problem and a
 wrong one.
 
+![The number turned into text, its first six replaced, and turned back](diagrams/maximum-69-number-notes-a1-replace.jpg)
+
 Two things to know rather than to fear. It takes a **regular expression**, not a
 plain string, so a pattern with \`.\` or \`*\` in it would not mean what it looks
 like — \`"6"\` is safe, but the habit of forgetting is not. And it compiles that
@@ -97,6 +99,8 @@ raises every 6 and you are back to the wrong answer. 9999 never enters the body
 at all and falls out unchanged, which is the "no 6" case handled by doing
 nothing.
 
+![The character scan stopping at the first six it meets](diagrams/maximum-69-number-notes-a2-scan.jpg)
+
 ## Approach 3 — without building a string
 
 Neither version above needs text, and the one that does not is a digit loop with
@@ -134,6 +138,8 @@ maximum69Number(66)
 **Reading right to left is what makes it one pass.** Every 6 overwrites the
 remembered place, so the last one seen is the leftmost one in the number, and
 there is no second scan and nothing to compare.
+
+![The digit loop remembering the place of the last six it saw, right to left](diagrams/maximum-69-number-notes-a3-place.jpg)
 
 **\`place = -1\` is the "no 6 at all" case**, and it has to be a value no real
 place can take. It is the same case 9999 exercises in approach 2, said with a

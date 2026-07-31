@@ -68,6 +68,8 @@ callsFor(35)
 exists. The count roughly doubles for every 1 you add to \`n\` — that is
 **O(2ⁿ)** — while the answer itself only ever needed \`n\` additions.
 
+![The call tree for fib(5), with the whole of fib(3) computed twice](diagrams/fibonacci-number-notes-a1-tree.jpg)
+
 Space is **O(n)**, and it is the call stack rather than anything you allocated:
 the deepest chain of unfinished calls is \`n\` frames.
 
@@ -118,6 +120,8 @@ Put the two call counts side by side at \`n = 35\`: tens of millions against a f
 dozen. Same recursion, same base cases, one array — which is the whole of what
 memoisation is, and this is the smallest honest example of it on the sheet.
 
+![The same call tree with the repeated branch answered from the cache](diagrams/fibonacci-number-notes-a2-memo.jpg)
+
 **The one-argument \`fib\` is the method the problem asked for**, and the cache is
 an implementation detail it hides. An interviewer asking for \`fib(int n)\` should
 get \`fib(int n)\`.
@@ -165,6 +169,8 @@ fib(46)
 \`table[0]\` is left at 0 because a fresh \`int[]\` is already zeros, and \`table[1]\`
 is the one value that has to be planted. Every entry after that is read from the
 two behind it, which is the definition again — written forwards.
+
+![The table filled forwards, each entry reading the two behind it](diagrams/fibonacci-number-notes-a3-table.jpg)
 
 This is **O(n)** time and **O(n)** space, and it is where most people stop. Look
 at the loop body once more before you do: it only ever touches \`i - 1\` and
