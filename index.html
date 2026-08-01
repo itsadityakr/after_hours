@@ -84,6 +84,17 @@
         background: linear-gradient(145deg, #6d4aff, #34d399);
         animation: boot-breathe 1.6s cubic-bezier(0.45, 0, 0.55, 1) infinite;
       }
+      /* What the mark is replaced by once the cat has arrived — see
+         src/boot-cat.js. Bigger than the square it stands in for, because it is
+         a drawing rather than a shape and a 46px cat is a smudge. */
+      #boot-cat {
+        width: 132px;
+        height: 132px;
+        margin: -0.5rem 0;
+      }
+      #boot-cat svg {
+        display: block;
+      }
       [data-theme='relax'] #boot-mark {
         background: linear-gradient(145deg, #2f6a5a, #8a9a52);
       }
@@ -144,8 +155,26 @@
         document.documentElement.removeAttribute('data-booting')
       }, 8000)
     </script>
-    <script type="module" crossorigin src="./assets/index-qiScG0KO.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-D_wwQLTu.css">
+    <!-- ── The player ──────────────────────────────────────────────────────
+         Outside the bundle, deliberately, and this is the only reason why: the
+         cat on the boot screen has to arrive while the boot screen is still up,
+         and anything the bundler owns arrives with the app it is covering for.
+
+         Above the app's own script and not below it, which is the whole trick.
+         Deferred scripts run in document order — all of them, module or not —
+         so a pair of small ones placed after the bundle would be made to wait
+         for it, and the cat would arrive to find the boot screen already gone.
+         Vite puts its entry at the end of this head, so being anywhere in it is
+         enough to come first.
+
+         The app uses this same copy through `window.lottie` rather than
+         importing the package again — see src/components/Lottie.jsx. It is
+         copied out of node_modules by `npm run animations`, so the version in
+         public/ cannot drift from the one in package.json.                  -->
+    <script src="./vendor/lottie-light.js" defer></script>
+    <script src="./boot-cat.js" defer></script>
+    <script type="module" crossorigin src="./assets/index-BbZHiEPs.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-D0a4vymI.css">
   </head>
   <body>
     <div id="boot" aria-hidden="true">
